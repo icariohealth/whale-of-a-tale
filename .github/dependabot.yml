@@ -1,20 +1,21 @@
+---
 version: 2
 registries:
   rubygems-server-novullc-jfrog-io-novullc-api-gems-dev-gems-relea:
     type: rubygems-server
     url: https://novullc.jfrog.io/novullc/api/gems/dev-gems-release-virtual/
-    username: "${{secrets.RUBYGEMS_SERVER_NOVULLC_JFROG_IO_NOVULLC_API_GEMS_DEV_GEMS_RELEA_USERNAME}}"
-    password: "${{secrets.RUBYGEMS_SERVER_NOVULLC_JFROG_IO_NOVULLC_API_GEMS_DEV_GEMS_RELEA_PASSWORD}}"
-  docker-registry-822373129316-dkr-ecr-us-east-1-amazonaws-com:
+    username: "${{secrets.ARTIFACTORY_USERNAME}}"
+    password: "${{secrets.ARTIFACTORY_PASSWORD}}"
+  ecr-822373129316-dkr-ecr-us-east-1-amazonaws-com:
     type: docker-registry
     url: https://822373129316.dkr.ecr.us-east-1.amazonaws.com
-    username: AKIA366KCDRSGVMJOHEX
-    password: "${{secrets.DOCKER_REGISTRY_822373129316_DKR_ECR_US_EAST_1_AMAZONAWS_COM_PASSWORD}}"
+    username: "${{secrets.AWS_SECRET_ACCESS_KEY}}"
+    password: "${{secrets.AWS_ACCESS_KEY_ID}}"
   rubygems-server-enterprise-contribsys-com:
     type: rubygems-server
     url: https://enterprise.contribsys.com
-    username: "${{secrets.RUBYGEMS_SERVER_ENTERPRISE_CONTRIBSYS_COM_USERNAME}}"
-    password: "${{secrets.RUBYGEMS_SERVER_ENTERPRISE_CONTRIBSYS_COM_PASSWORD}}"
+    username: "${{secrets.CONTRIBSYS_USERNAME}}"
+    password: "${{secrets.CONTRIBSYS_PASSWORD}}"
 
 updates:
 - package-ecosystem: bundler
@@ -54,7 +55,7 @@ updates:
     versions:
     - 3.0.0.pre.alpine
   registries:
-  - docker-registry-822373129316-dkr-ecr-us-east-1-amazonaws-com
+  - ecr-822373129316-dkr-ecr-us-east-1-amazonaws-com
 - package-ecosystem: npm
   directory: "/"
   schedule:
